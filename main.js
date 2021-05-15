@@ -18,8 +18,10 @@ const puppeteer = require('puppeteer');
   
   const nome = await page.evaluate(() => document.querySelectorAll('.usuario')[0].innerText)
   const unidade = await page.evaluate(() => document.querySelectorAll('.unidade')[0].innerText)
+  const foto = await page.evaluate(() => document.getElementsByClassName('foto')[0].querySelector('img').src)
+  const matricula = await page.evaluate(() => document.getElementsByTagName('table')[33].querySelector('tbody').getElementsByTagName('tr')[0].getElementsByTagName('td')[1].innerText)
 
-    var userData = {nome, unidade}
+   var userData = {nome, unidade, foto}
 
     console.log(userData);
 })();

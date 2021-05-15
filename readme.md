@@ -4,9 +4,9 @@
 - [ ] Extract user info 
     - [x] Name
     - [x] Unity
-    - [ ] Course
+    - [x] Course
     - [ ] IRA
-    - [ ] Registration
+    - [x] Registration
     - [ ] Classes Schedule
 
 - [ ] Generate Classes Schedule table
