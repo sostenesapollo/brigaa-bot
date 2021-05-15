@@ -14,16 +14,10 @@ const puppeteer = require('puppeteer');
 
   console.log('logando..');
   await page.waitForNavigation();
-  await page.pdf({ path: 'hn.pdf', format: 'a4' });
   console.log('logado.');
-
-    //* Get name
-    const nameContent = await page.evaluate(() => document.querySelector('[class="usuario"]').nameContent);
-    const nome = nameContent.replace(/\n/g,"").replace(/\t/g,"")
-
-    //* Get unity
-    const unityContent = await page.evaluate(() => document.querySelector('[class="unidade"]').unityContent);
-    const unidade = unityContent.replace(/\n/g,"").replace(/\t/g,"")    
+  
+  const nome = await page.evaluate(() => document.querySelectorAll('.usuario')[0].innerText)
+  const unidade = await page.evaluate(() => document.querySelectorAll('.unidade')[0].innerText)
 
     var userData = {nome, unidade}
 
