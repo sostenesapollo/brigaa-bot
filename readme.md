@@ -1,19 +1,19 @@
 ## Telegram Sigaa Bot
 - [x] Install Puppeteer
 - [x] Login Sigaa
-- [ ] Extract user info 
+- [x] Extract user info 
     - [x] Name
     - [x] Unity
     - [x] Course
-    - [ ] IRA
+    - [x] IRA
     - [x] Registration
-    - [ ] Classes Schedule
+    - [x] Classes Schedule
 
 - [ ] Generate Classes Schedule table
 - [ ] Generate Classes Schedule table ( Past classes )
 - [ ] Get user grades
-- [ ] Get Classes names
-- [ ]
+- [x] Get Classes names
+- [x] Close pup. session after get data
 
 - [ ] Database connection
 - [ ] Telegram Api / Whatsapp API
