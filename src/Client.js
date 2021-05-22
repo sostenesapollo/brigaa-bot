@@ -8,7 +8,7 @@ class Client {
             throw Error("Check your credentials.")
             
         this.credentials = credentials
-        this.headless    = false
+        this.headless    = true
     }
     
     async login () {
@@ -23,15 +23,24 @@ class Client {
 
         this.page.keyboard.press('Enter');
 
-        console.log('logando..');
         await this.page.waitForNavigation();
-        console.log('logado.');
+
+        let invalidCredentials = await this.page.evaluate(() => document.querySelectorAll('center')[1].innerText)
+
+        if(invalidCredentials == 'Usuário e/ou senha inválidos'){
+            this.close()
+            return {error: "💩 Usuário e/ou senha inválidos ..."}
+        }
+
+        return {logged: true}
 
         // Create verification if is in the main page.
     }
 
     async getUserData () {
-        await this.login()
+        const logged = await this.login()
+        if(!logged.logged)
+            throw new Error(logged.error);
 
         this.userData = {}
         this.userData.nome = await this.page.evaluate(() => document.querySelectorAll('.usuario')[0].innerText)
@@ -80,8 +89,10 @@ class Client {
         this.userData['disciplinas']             = disciplinas
         this.userData['quantidade_disciplinas']  = disciplinas.length
 
-        console.log(this.userData);
         this.close()
+        
+        console.log(this.userData);
+        return this.userData
     }
 
     close () {

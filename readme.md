@@ -16,4 +16,10 @@
 - [x] Close pup. session after get data
 
 - [ ] Database connection
-- [ ] Telegram Api / Whatsapp API
+    - [ ] Store user data and update it
+    - [ ] Get previous classes
+
+- [x] Telegram Api / Whatsapp API
+    - [x] Telegram choosed. Better files storing, and keep it most than with wp
+- [x] I'll not store the files in my server.. it would consume a lot of gbs
+- [ ] Store user data and credentials inside a db to auto login and update user data in db (just text and links)
