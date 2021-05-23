@@ -4,6 +4,7 @@
   "description": "A sigaa crawler",
   "main": "src/main.js",
   "dependencies": {
+    "node-html-to-image": "^3.1.0",
     "puppeteer": "^9.1.1",
     "telegraf": "^4.3.0",
     "telegraf-inline-menu": "^6.2.1"

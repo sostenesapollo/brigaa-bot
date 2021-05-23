@@ -46,6 +46,7 @@ class Client {
         this.userData.nome = await this.page.evaluate(() => document.querySelectorAll('.usuario')[0].innerText)
         this.userData.unidade = await this.page.evaluate(() => document.querySelectorAll('.unidade')[0].innerText)
         this.userData.foto = await this.page.evaluate(() => document.getElementsByClassName('foto')[0].querySelector('img').src)
+        this.userData.semestre = await this.page.evaluate(() => document.getElementsByClassName('periodo-atual')[0].innerText.split(' ')[2])
 
         let dadosInstitucionais = await this.page.evaluate(() => {
             var tds = Array.from(document.querySelectorAll('table')[33].querySelectorAll('tr td'))            
