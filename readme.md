@@ -1,4 +1,10 @@
-## Telegram Sigaa Bot
+## 💬 Telegram Sigaa Bot
+
+<img src="https://github.com/sostenesapollo/brigaa-bot/blob/master/telegram.png" height="350" />
+
+
+# 📑 Todo List
+
 - [x] Install Puppeteer
 - [x] Login Sigaa
 - [x] Extract user info 
