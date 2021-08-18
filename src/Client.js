@@ -8,22 +8,19 @@ class Client {
             throw Error("Check your credentials.")
             
         this.credentials = credentials
-        this.headless    = false
+        this.headless    = true
     }
     
     async login () {
         try {
-            this.browser = await puppeteer.launch({
-                headless: this.headless === 'true',
-                args: [
-                    '--no-sandbox',
-                    '--disable-web-security',
-                    '--disable-features=IsolateOrigins,site-per-process'
-                ]}
-            );
+            this.browser = await puppeteer.launch({headless: this.headless,
+            args: [
+            '--no-sandbox',
+            '--disable-web-security',
+            '--disable-features=IsolateOrigins,site-per-process'
+            ]});
             // this.page = await this.browser.newPage()
             this.page = (await this.browser.pages())[0];
-                console.log(urls.login)
             await this.page.goto(urls.login, { waitUntil: 'networkidle0' })
 
             // this.page.on('console', consoleObj => console.log(consoleObj.text()));
