@@ -1,4 +1,3 @@
-const { default: _default } = require('next-dark-mode');
 const puppeteer = require('puppeteer');
 const urls      = require('./urls')
 
