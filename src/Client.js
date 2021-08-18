@@ -1,3 +1,4 @@
+const { default: _default } = require('next-dark-mode');
 const puppeteer = require('puppeteer');
 const urls      = require('./urls')
 
@@ -12,27 +13,40 @@ class Client {
     }
     
     async login () {
-        this.browser = await puppeteer.launch({headless:this.headless});
-        this.page = await this.browser.newPage()
-        await this.page.goto(urls.login, { waitUntil: 'networkidle0' })
+        try {
+            this.browser = await puppeteer.launch({
+                headless: this.headless === 'true',
+                args: [
+                    '--no-sandbox',
+                    '--disable-web-security',
+                    '--disable-features=IsolateOrigins,site-per-process'
+                ]}
+            );
+            // this.page = await this.browser.newPage()
+            this.page = (await this.browser.pages())[0];
+                console.log(urls.login)
+            await this.page.goto(urls.login, { waitUntil: 'networkidle0' })
 
-        // this.page.on('console', consoleObj => console.log(consoleObj.text()));
+            // this.page.on('console', consoleObj => console.log(consoleObj.text()));
 
-        await this.page.$eval('input[name="user.login"]', (el, credentials) => el.value = credentials.user, this.credentials)
-        await this.page.$eval('input[name="user.senha"]', (el, credentials) => el.value = credentials.pass, this.credentials)
+            await this.page.$eval('input[name="user.login"]', (el, credentials) => el.value = credentials.user, this.credentials)
+            await this.page.$eval('input[name="user.senha"]', (el, credentials) => el.value = credentials.pass, this.credentials)
 
-        this.page.keyboard.press('Enter');
+            this.page.keyboard.press('Enter');
 
-        await this.page.waitForNavigation();
+            await this.page.waitForNavigation();
 
-        let invalidCredentials = await this.page.evaluate(() => document.querySelectorAll('center')[1].innerText)
+            let invalidCredentials = await this.page.evaluate(() => document.querySelectorAll('center')[1].innerText)
 
-        if(invalidCredentials == 'Usuário e/ou senha inválidos'){
-            this.close()
-            return {error: "💩 Usuário e/ou senha inválidos ..."}
+            if(invalidCredentials == 'Usuário e/ou senha inválidos'){
+                this.close()
+                return {error: "💩 Usuário e/ou senha inválidos ..."}
+            }
+
+            return {logged: true}
+        }catch(e) {
+            throw new Error('Erro ao realizar login'+e.message)
         }
-
-        return {logged: true}
 
         // Create verification if is in the main page.
     }
