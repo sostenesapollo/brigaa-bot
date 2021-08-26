@@ -8,7 +8,7 @@ class Client {
             throw Error("Check your credentials.")
             
         this.credentials = credentials
-        this.headless    = true
+        this.headless    = false
     }
     
     async login () {
@@ -41,7 +41,7 @@ class Client {
 
             return {logged: true}
         }catch(e) {
-            throw new Error('Erro ao realizar login'+e.message)
+            throw new Error('Erro ao realizar login\n\nVerifique se você respondeu a pesquisa que aparece logo depois que você loga, caso não tenha, responda e depois tente novamente. Erro:\n\n'+e.message)
         }
 
         // Create verification if is in the main page.
