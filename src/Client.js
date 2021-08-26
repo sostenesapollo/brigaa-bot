@@ -8,7 +8,7 @@ class Client {
             throw Error("Check your credentials.")
             
         this.credentials = credentials
-        this.headless    = false
+        this.headless    = true
     }
     
     async login () {
