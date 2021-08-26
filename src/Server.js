@@ -18,7 +18,7 @@ class Server {
         
         const menuTemplate = new MenuTemplate(ctx => {
             return {
-                text: `Olá ${ctx.from.first_name} Seja bem vindo ao *Brigaa*\n`,
+                text: `🙋 Olá ${ctx.from.first_name} Seja bem vindo ao *Brigaa*\n\n🤖 Sou um bot OpenSource do sigaa-UFPI.\n\n🛠 Caso queira contribuir com o projeto acesse: https://github.com/sostenesapollo/brigaa-bot\n\n\n📅 No momento eu só consigo gerar o seu horário de disciplinas de forma mais bonita 💅, mas em breve terei mais funcões.\n\n`,
                 parse_mode: 'Markdown'
             }
         })
@@ -26,7 +26,7 @@ class Server {
         menuTemplate.interact('Realizar Login', 'a', {
                 do: async ctx => {
                     await ctx.replyWithHTML(
-                        '<b>🔒 Realizar Login</b> \n\n Para realizar o login no sigaa: \n\n Digite:   /login <b>usuario</b> <b>senha</b> \n\n 👉 Exemplo: /login lauren10 senha1234'
+                        '<b>🔒 Realizar Login</b> \n\n Para realizar o login no sigaa: \n\n Digite:   /login <b>usuario</b> <b>senha</b> \n\n 👉 Exemplo: /login lauren10 senha1234 \n\n🚨 Você Precisa responder a pesquisa do sigaa para não dar erro !'
                     )
                     return false
                 }
