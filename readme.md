@@ -35,3 +35,4 @@
 - [x] Send schedule image via telegram
 - [x] Login error message via telegram
 
+- [ ] Class reminder - send a automatized message 10 minutes before a class, and if possible the meet link
